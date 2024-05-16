@@ -6,15 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-
-    
-
-
-    <form method="POST" action="{% url 'register_view' %}">
+    <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }} 
-       
-        <button type="submit">Register</button>
+        {{ form.as_p }}
+        <button type="submit">Login</button>
     </form>
 
 
