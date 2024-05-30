@@ -20,16 +20,15 @@ def home(request):
         'blogs': blogs
     }
             
-    return render(request, 'web/home.html', context)
-    # products = Product.objects.all()
-    # return render(request, 'web/home.html', {'products': products})
+    # return render(request, 'web/home.html', context)
+    products = Product.objects.all()
+    return render(request, 'web/home.html', {'products': products})
 
 
 
 
 def calc_view(request):
     result = ''
-    print("ssssssssssssssssss")
     num1 = request.GET.get('num1')
     num2 = request.GET.get('num2')
     if num1 and num2:

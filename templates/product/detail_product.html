@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Mehsulun adi: {{product.name}}</h4>
+    <h4>Mehsulun qiymeti: {{product.price}}</h4>
+    <h4>ID: {{product.id}}</h4>
+    <h4>Tarix: {{product.created_at}}</h4>
+    <h4>User: {{product.user.username}}</h4>
+    {% if product.image %}
+    <h4>Image: {{product.image.url}}</h4>
+    {% endif %}
+    
+</body>
+</html>

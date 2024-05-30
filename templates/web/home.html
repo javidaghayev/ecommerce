@@ -8,13 +8,18 @@
 
 {% for instance in products %}
 <h4>Mehsulun adi: {{instance.name}}</h4>
-<h4>Mehsulun qiymeti: {{instance.price}}</h4>
-<h4>ID: {{instance.id}}</h4>
 <h4>Tarix: {{instance.created_at}}</h4>
 <h4>User: {{instance.user.username}}</h4>
 {% if instance.image %}
-<h4>User: {{instance.image.url}}</h4>
+<h4>Image: {{instance.image.url}}</h4>
 {% endif %}
+
+<a href="{% url 'detail_product' instance.id %}">more detail</a>
+<br><br>
+{% if user == instance.user %}
+<a href="{% url 'delete_product' instance.id %}">delete</a>
+{% endif %}
+<br><br>
 
 {% endfor %}
 
