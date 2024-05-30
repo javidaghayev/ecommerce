@@ -1,21 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Kur sizi salamlayir</title>
-    <h2>Mehsullar</h2>
+{% extends 'base/layout.html' %}
+{% block content %}
 
-    {% for instance in products %}
-    <h4>Mehsulun adi: {{instance.name}}</h4>
-    <h4>Mehsulun qiymeti: {{instance.price}}</h4>
-    <h4>ID: {{instance.id}}</h4>
-    <h4>Tarix: {{instance.created_at}}</h4>
-    <h4>User: {{instance.user.username}}</h4><br>
 
-    {% endfor %}
+<meta charset="UTF-8">
+<title>Kur sizi salamlayir</title>
+<h2>Mehsullar</h2>
 
-</head>
-<body>
-    
-</body>
-</html>
+{% for instance in products %}
+<h4>Mehsulun adi: {{instance.name}}</h4>
+<h4>Mehsulun qiymeti: {{instance.price}}</h4>
+<h4>ID: {{instance.id}}</h4>
+<h4>Tarix: {{instance.created_at}}</h4>
+<h4>User: {{instance.user.username}}</h4>
+{% if instance.image %}
+<h4>User: {{instance.image.url}}</h4>
+{% endif %}
+
+{% endfor %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+
+
+<br><br><br><br>
+
+<div class="container">
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="text" class="form-control" name="name"> <br>
+        <input type="file" class="form-control" name="image"> <br>
+        <button class="btn btn-success">Enter</button>
+    </form>
+
+<br><br><br>
+<div class="alert alert-warning"></div>
+
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Image</th>
+            </tr>
+
+        </thead>
+
+        {% for blog in blogs %}
+
+        <tbody>
+            <tr>
+                <td>{{blog.id}}</td>
+                <td>{{blog.name}}</td>
+                <td>{{blog.image}}</td>
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+<br>
+
+{% endfor %}
+{% endcomment %}

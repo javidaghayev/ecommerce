@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 
 
 
+
+
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -16,10 +19,9 @@ def login_view(request):
             if user:
                 login(request, user)
                 return redirect('home')
-            
-            else:
-                messages.error(request, "This user already exists")
 
+            else:
+                messages.error(request, 'Usr yoxdu')
 
     form = LoginForm()
     context = {
@@ -38,7 +40,6 @@ def logout_view(request):
 
 
 
-
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -52,15 +53,39 @@ def register_view(request):
                 return redirect('home')
             
             else:
-                return redirect('register_view')
+                return redirect('home')
 
         
     else:
         form = RegisterForm()
-        context = {
-            'form': form
-        }
-        return render(request, 'user/register.html', context)
+    context = {
+        'form': form
+    }
+    return render(request, 'user/register.html', context)
     
 
 
+
+def profile_view(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_view')
+        
+    form = ProfileForm(instance=request.user)
+    return render(request, 'user/profile.html', {'form': form})
+
+
+
+
+# def profile_view(request, pk):
+#     user = UserProfile.objects.get(pk=pk)
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, instance=user)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('profile_view', kwargs={'pk': user.pk})
+        
+#     form = ProfileForm(instance=request.user)
+#     return render(request, 'user/profile.html', {'form': form})
